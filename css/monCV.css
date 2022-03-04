@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+:root{
+
+    --txtc:rgb(35, 42, 56);
+}
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(108, 138, 138);
+    font-family: 'Nunito', sans-serif;
+    
+}
+.imgh{
+    background-color: blue;
+    /* background-image: url(../images/photo.jpg); */
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    height: 300px;
+}
+.infoH{
+    
+    background-color: var(--txtc);
+    
+    height: 300px;
+    padding:90px 60px;
+}
+.infoH span{
+    margin: 0 12px;
+    color: rgb(102, 116, 121);
+    font-size: 1.3em;
+}
+.infoH h1{
+    margin-bottom: 23px;
+    color: rgb(255, 255, 255);
+    font-size: 3em;
+}
+
+.titre {
+    color: var(--txtc);
+   
+}
+ .element{
+     padding-right:25px;
+    margin-top: 25px;
+
+ }
+ .progress{
+    height: 10px;
+ }
+ .progress-bar{
+     background-color: var(--txtc);
+ }
+ .profil::after{
+     content: " ";
+     width: 1px;
+     height: 500px;
+     border-right: 1px solid rgb(0, 0, 0) !important;
+ }
