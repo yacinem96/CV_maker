@@ -455,12 +455,48 @@ if (path === "index.html") {
 
 // monCV page
 else if (path === "monCV.html") {
-
+    
+    // fonction ucFirst
     function ucFirst(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    // fonction etat civil
+    function etatCivil(etat,personne) {
 
+        switch (etat) {
+            case "c":
+                return "Célibataire";
+               
+            case "m":
+                if (personne.sexe=="Homme") {
+                    return "Marié";
+                } else {
+                     return "Mariée"; 
+                }
+              
+               
+            case "d":
+                if (personne.sexe=="Homme") {
+                    return "Divorcé";
+                } else {
+                     return "Divorcée"; 
+                }
+                
 
+            default:
+                return "Autre";
+               
+        }
+    }
+    // fonction convert niv en %
+    function calcNiv(niv){
+        if (niv===3) {
+            return 50;
+        } else {
+            return niv*20; 
+        }
+       
+    }
 
 
 
@@ -493,15 +529,68 @@ else if (path === "monCV.html") {
     `;
 
         // header photo
-        if (personne.photo=="") {
-            document.getElementById("imgh").style.backgroundColor=personne.color;
+        if (personne.photo == "") {
+
+            document.getElementById("imgh").style.backgroundColor = personne.color;
+
         } else {
-            
+
+            // document.getElementById("imgh").style.backgroundImage.url(`../images/${personne.photo}`);
         }
-        document.getElementById("imgh").style.backgroundImage.url(`../images/${personne.photo}`);
+
+        // detailp debut
+        document.getElementById("detailp").innerHTML=`
+        <h2 class="titre">Détails personels</h2>
+
+        <div class="element">
+            <h5 class="text-muted">Nom</h5>
+            <h5 id="nom">${ucFirst(personne.prenom)} ${ucFirst(personne.nom)}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Adresse e-mail</h5>
+            <h5 id="email"> ${personne.email}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Numéro de téléphone</h5>
+            <h5 id="tel">${personne.tel}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Adresse</h5>
+            <h5 id="adr">${personne.adresse} ${personne.codep} ${personne.ville}, Algerie</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Date de naissance </h5>
+            <h5 id="daten">${personne.daten}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">lieu de naissance</h5>
+            <h5 id="lieun">${ucFirst(personne.lieun)}, Alger</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Sexe</h5>
+            <h5 id="sexe">${personne.sexe}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Nationalité</h5>
+            <h5 id="nat">${ucFirst(personne.nationalite)}</h5>
+        </div>
+        <div class="element">
+            <h5 class="text-muted">Etat civil</h5>
+            <h5 id="etatc">${etatCivil(personne.statusC,personne)}</h5>
+        </div>
+        `;
+
+        // fin detailp
+
+        // debut langues
+        document.getElementById("langue").innerHTML=html_langues;
+        // fin langues
+
+
 
 
     }
+    // end onlad
 
 
 

@@ -14,7 +14,7 @@ body {
     
 }
 .imgh{
-    background-color: blue;
+    background-color: rgb(42, 71, 90);
     /* background-image: url(../images/photo.jpg); */
     background-position: 50% 50%;
     background-repeat: no-repeat;
