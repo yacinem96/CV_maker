@@ -455,47 +455,98 @@ if (path === "index.html") {
 
 // monCV page
 else if (path === "monCV.html") {
-    
+
     // fonction ucFirst
     function ucFirst(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     // fonction etat civil
-    function etatCivil(etat,personne) {
+    function etatCivil(etat, personne) {
 
         switch (etat) {
             case "c":
                 return "Célibataire";
-               
+
             case "m":
-                if (personne.sexe=="Homme") {
+                if (personne.sexe == "Homme") {
                     return "Marié";
                 } else {
-                     return "Mariée"; 
+                    return "Mariée";
                 }
-              
-               
+
+
             case "d":
-                if (personne.sexe=="Homme") {
+                if (personne.sexe == "Homme") {
                     return "Divorcé";
                 } else {
-                     return "Divorcée"; 
+                    return "Divorcée";
                 }
-                
+
 
             default:
                 return "Autre";
-               
+
         }
     }
     // fonction convert niv en %
-    function calcNiv(niv){
-        if (niv===3) {
+    function calcNiv(niv) {
+        if (niv == 3) {
             return 50;
         } else {
-            return niv*20; 
+            return niv * 20;
         }
-       
+
+    }
+
+    // display langues
+    function displayLangue(array) {
+        html_langues = "";
+
+        for (let i = 0; i <= array.length / 2 + 1; i++) {
+
+            console.log("i= " + i);
+            html_langues += `
+            <div class="element">
+            <h5 class="">${ucFirst(array[i])}</h5>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[i + 1])}%" aria-valuenow="${calcNiv(array[i + 1])}"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+            `;
+            i++;
+
+
+        }
+
+
+    }
+
+    // display competences
+    function displayCompetence(array) {
+        html_competences = "";
+
+        for (let i = 0; i <= array.length / 2 + 1; i++) {
+
+            console.log("i= " + i);
+            html_competences += `
+            <div class="col col-6">
+                <div class="element">
+                    <h5 class="">${ucFirst(array[i])}</h5>
+                    <div class="progress w-75">
+                        <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[i + 1])}%"
+                            aria-valuenow="${calcNiv(array[i + 1])}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            i++;
+
+
+        }
+
+
     }
 
 
@@ -505,6 +556,7 @@ else if (path === "monCV.html") {
     // onload infos CV
 
     onload = () => {
+
 
         personne = JSON.parse(localStorage.getItem("pers"));
         liste_langues = localStorage.getItem("l_langues").split(",");
@@ -539,7 +591,7 @@ else if (path === "monCV.html") {
         }
 
         // detailp debut
-        document.getElementById("detailp").innerHTML=`
+        document.getElementById("detailp").innerHTML = `
         <h2 class="titre">Détails personels</h2>
 
         <div class="element">
@@ -576,15 +628,29 @@ else if (path === "monCV.html") {
         </div>
         <div class="element">
             <h5 class="text-muted">Etat civil</h5>
-            <h5 id="etatc">${etatCivil(personne.statusC,personne)}</h5>
+            <h5 id="etatc">${etatCivil(personne.statusC, personne)}</h5>
         </div>
         `;
 
         // fin detailp
 
+
         // debut langues
-        document.getElementById("langue").innerHTML=html_langues;
+        displayLangue(liste_langues);
+        document.getElementById("langue").innerHTML = `<h2 class="titre">Langues</h2>` + html_langues;
         // fin langues
+
+        // debut competences
+        if (liste_competences.length==0) {
+            
+        } else {
+             displayCompetence(liste_competences);
+        // document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>`;
+        document.getElementById("comp").innerHTML=html_competences;
+        // fin competeneces  
+        }
+     
+
 
 
 
