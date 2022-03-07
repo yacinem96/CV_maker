@@ -561,7 +561,7 @@ else if (path === "monCV.html") {
             <div class="element">
                 <h5 id="projet" class="d-inline-block">${ucFirst(arr[j])}</h5>
                 <span id="anneP" class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
-                <h5 id="descp" class="text-muted">${ucFirst(arr[j+1])}</h5>
+                <h5 id="descp" class="text-muted">${ucFirst(arr[j + 1])}</h5>
             </div>
             `;
             j += 2;
@@ -581,7 +581,7 @@ else if (path === "monCV.html") {
             <div class="element">
             <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
             <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
-            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+            <h5 class="text-muted">${ucFirst(arr[j + 1])}</h5>
 
         </div>
             `;
@@ -604,7 +604,7 @@ else if (path === "monCV.html") {
             <div class="element">
             <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
             <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}-${arr[j + 3]}</span>
-            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+            <h5 class="text-muted">${ucFirst(arr[j + 1])}</h5>
 
         </div>
             `;
@@ -727,9 +727,11 @@ else if (path === "monCV.html") {
 
         } else {
 
-            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>`;
+            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>` + `<div class="container">
+            <div class="row comp" id="comp">   </div>
+            </div>`;
             displayCompetence(liste_competences);
-            // document.getElementById("comp").innerHTML = html_competences;
+            document.getElementById("comp").innerHTML = html_competences;
 
         }
         // fin competeneces  
