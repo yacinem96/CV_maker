@@ -639,6 +639,9 @@ else if (path === "monCV.html") {
         console.log("projets " + liste_projets);
         console.log("competences " + liste_competences);
 
+        // couleur du cv
+        
+
         // header info
         document.getElementById("infoH").innerHTML = `
     <h1 id="nomH"> ${ucFirst(personne.prenom)} ${ucFirst(personne.nom)}</h1>
@@ -727,9 +730,13 @@ else if (path === "monCV.html") {
 
         } else {
 
-            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>` + `<div class="container">
-            <div class="row comp" id="comp">   </div>
-            </div>`;
+            document.getElementById("comptetence").innerHTML = `
+            <h2 class="titre">Competeneces</h2>` +
+                `   <div class="container">
+                        <div class="row comp" id="comp">  
+                        </div>
+                    </div>
+                `;
             displayCompetence(liste_competences);
             document.getElementById("comp").innerHTML = html_competences;
 
