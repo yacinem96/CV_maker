@@ -96,6 +96,18 @@ if (path === "index.html") {
     // var langues= document.getElementById("langues");
     // var competences = document.getElementById("competences");
 
+    async function getWilayas() {
+        var selectWilayas = document.getElementById('wilayas')
+
+
+        let response = await fetch('../wilayas.json');
+        let data = await response.json();
+
+        selectWilayas.innerHTML +=
+            data.map(e => `<option>${e.name}</option>`)
+    }
+
+    getWilayas()
 
     // diplome
     nbrd.addEventListener("change", () => {
@@ -453,6 +465,7 @@ if (path === "index.html") {
 // end index
 
 
+
 // monCV page
 else if (path === "monCV.html") {
 
@@ -561,7 +574,7 @@ else if (path === "monCV.html") {
             <div class="element">
                 <h5 id="projet" class="d-inline-block">${ucFirst(arr[j])}</h5>
                 <span id="anneP" class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
-                <h5 id="descp" class="text-muted">${ucFirst(arr[j+1])}</h5>
+                <h5 id="descp" class="text-muted">${ucFirst(arr[j + 1])}</h5>
             </div>
             `;
             j += 2;
@@ -581,7 +594,7 @@ else if (path === "monCV.html") {
             <div class="element">
             <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
             <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
-            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+            <h5 class="text-muted">${ucFirst(arr[j + 1])}</h5>
 
         </div>
             `;
@@ -604,7 +617,7 @@ else if (path === "monCV.html") {
             <div class="element">
             <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
             <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}-${arr[j + 3]}</span>
-            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+            <h5 class="text-muted">${ucFirst(arr[j + 1])}</h5>
 
         </div>
             `;
