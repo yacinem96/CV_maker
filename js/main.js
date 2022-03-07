@@ -96,6 +96,18 @@ if (path === "index.html") {
     // var langues= document.getElementById("langues");
     // var competences = document.getElementById("competences");
 
+    async function getWilayas() {
+        var selectWilayas = document.getElementById('wilayas')
+
+
+        let response = await fetch('../wilayas.json');
+        let data = await response.json();
+
+        selectWilayas.innerHTML +=
+            data.map(e => `<option>${e.name}</option>`)
+    }
+
+    getWilayas()
 
     // diplome
     nbrd.addEventListener("change", () => {
@@ -451,6 +463,7 @@ if (path === "index.html") {
 
 
 // end index
+
 
 
 // monCV page
