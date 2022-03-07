@@ -805,6 +805,10 @@ else if (path === "monCV.html") {
             progress[i].style.backgroundColor = personne.color;
             
         }
+        for (let i = 0; i < titre.length; i++) {
+            titre[i].style.color = personne.color;
+            
+        }
 
 
     }
