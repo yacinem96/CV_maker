@@ -504,7 +504,7 @@ else if (path === "monCV.html") {
 
         for (let i = 0; i <= array.length / 2 + 1; i++) {
 
-            console.log("i= " + i);
+            console.log("langues i= " + i);
             html_langues += `
             <div class="element">
             <h5 class="">${ucFirst(array[i])}</h5>
@@ -522,13 +522,14 @@ else if (path === "monCV.html") {
 
     }
 
+
     // display competences
     function displayCompetence(array) {
         html_competences = "";
 
         for (let i = 0; i <= array.length / 2 + 1; i++) {
 
-            console.log("i= " + i);
+            console.log("competences i= " + i);
             html_competences += `
             <div class="col col-6">
                 <div class="element">
@@ -542,6 +543,72 @@ else if (path === "monCV.html") {
             </div>
             `;
             i++;
+
+
+        }
+
+
+    }
+
+    // display projets
+    function displayProjet(arr) {
+        html_projets = "";
+        let j = 0;
+        for (let i = 0; i < arr.length / 3; i++) {
+            j += i;
+            console.log("projets j= " + j);
+            html_projets += `
+            <div class="element">
+                <h5 id="projet" class="d-inline-block">${ucFirst(arr[j])}</h5>
+                <span id="anneP" class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
+                <h5 id="descp" class="text-muted">${ucFirst(arr[j+1])}</h5>
+            </div>
+            `;
+            j += 2;
+
+
+        }
+    }
+
+    // display diplomes
+    function displayDiplome(arr) {
+        html_diplomes = "";
+        let j = 0;
+        for (let i = 0; i < arr.length / 3; i++) {
+            j += i;
+            console.log("diplomes j= " + j);
+            html_diplomes += `
+            <div class="element">
+            <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
+            <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
+            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+
+        </div>
+            `;
+            j += 2;
+
+
+        }
+    }
+
+
+
+    // display formations
+    function displayFormation(arr) {
+        html_formations = "";
+        let j = 0;
+        for (let i = 0; i < arr.length / 4; i++) {
+            j += i;
+            console.log("formations j= " + j);
+            html_formations += `
+            <div class="element">
+            <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
+            <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}-${arr[j + 3]}</span>
+            <h5 class="text-muted">${ucFirst(arr[j+1])}</h5>
+
+        </div>
+            `;
+            j += 3;
 
 
         }
@@ -634,6 +701,21 @@ else if (path === "monCV.html") {
 
         // fin detailp
 
+        // debut profil
+        if (personne.profile != "") {
+            document.getElementById("profil").innerHTML = `
+            <h2 class="titre">Profil</h2>
+            <div class="element">
+                <h5 id="desc" class="">${personne.profile} </h5>
+
+            </div>
+            <hr class="m-4 text-dark shadow">
+            `;
+
+        } else {
+            console.log("pas de profile");
+        }
+        // fin profil
 
         // debut langues
         displayLangue(liste_langues);
@@ -641,15 +723,49 @@ else if (path === "monCV.html") {
         // fin langues
 
         // debut competences
-        if (liste_competences.length==0) {
-            
+        if (liste_competences.length == 0) {
+
         } else {
-             displayCompetence(liste_competences);
-        // document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>`;
-        document.getElementById("comp").innerHTML=html_competences;
-        // fin competeneces  
+
+            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>`;
+            displayCompetence(liste_competences);
+            // document.getElementById("comp").innerHTML = html_competences;
+
         }
-     
+        // fin competeneces  
+
+        // debut projets
+        if (liste_projets.length == 0) {
+
+        } else {
+
+            displayProjet(liste_projets);
+            document.getElementById("projets").innerHTML = `<h2 class="titre">Projet</h2>` + html_projets + `<hr class="m-4 text-dark shadow">`;
+
+        }
+        // fin projets  
+
+        // debut formations
+        if (liste_formations.length == 0) {
+
+        } else {
+
+            displayFormation(liste_formations);
+            document.getElementById("formation").innerHTML = `<h2 class="titre">Formation</h2>` + html_formations + `<hr class="m-4 text-dark shadow">`;
+
+        }
+        // fin formations  
+
+        // debut diplomes
+        if (liste_diplomes.length == 0) {
+
+        } else {
+
+            displayDiplome(liste_diplomes);
+            document.getElementById("diplome").innerHTML = `<h2 class="titre">Diplome</h2>` + html_diplomes + `<hr class="m-4 text-dark shadow">`;
+
+        }
+        // fin diplomes  
 
 
 
