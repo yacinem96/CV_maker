@@ -9,7 +9,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     width: 100%;
-    background-color: rgb(108, 138, 138);
+    background-color: rgba(108, 138, 138, 0.596);
     font-family: 'Nunito', sans-serif;
     
 }

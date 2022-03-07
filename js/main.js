@@ -77,7 +77,7 @@ var Algeria = [
     "Tlemcen",
 ];
 
-// begin index page
+// debut index page
 if (path === "index.html") {
     // nombre de diplome
     var nbrd = document.getElementById("nbrd");
@@ -96,18 +96,18 @@ if (path === "index.html") {
     // var langues= document.getElementById("langues");
     // var competences = document.getElementById("competences");
 
-    async function getWilayas() {
-        var selectWilayas = document.getElementById('wilayas')
+    // async function getWilayas() {
+    //     var selectWilayas = document.getElementById('ville')
 
 
-        let response = await fetch('../wilayas.json');
-        let data = await response.json();
+    //     let response = await fetch('../wilayas.json');
+    //     let data = await response.json();
 
-        selectWilayas.innerHTML +=
-            data.map(e => `<option>${e.name}</option>`)
-    }
+    //     selectWilayas.innerHTML +=
+    //        `<option>${e.name}</option>`+ data.map(e => `<option>${e.name}</option>`)
+    // }
 
-    getWilayas()
+    // getWilayas();
 
     // diplome
     nbrd.addEventListener("change", () => {
@@ -438,8 +438,8 @@ if (path === "index.html") {
             localStorage.setItem("l_projets", liste_projets);
             localStorage.setItem("l_competences", liste_competences);
 
-            //  btnS.classList.add("d-none");
-            //  btnC.classList.remove("d-none");
+            btnS.classList.add("d-none");
+            btnC.classList.remove("d-none");
 
         }
         else {
@@ -462,17 +462,18 @@ if (path === "index.html") {
 }
 
 
-// end index
+//fin index
 
 
 
-// monCV page
+//debut monCV page
 else if (path === "monCV.html") {
 
     // fonction ucFirst
     function ucFirst(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
     // fonction etat civil
     function etatCivil(etat, personne) {
 
@@ -514,20 +515,20 @@ else if (path === "monCV.html") {
     // display langues
     function displayLangue(array) {
         html_langues = "";
-
-        for (let i = 0; i <= array.length / 2 + 1; i++) {
+        let j = 0;
+        for (let i = 0; i < array.length / 2; i++) {
 
             console.log("langues i= " + i);
             html_langues += `
             <div class="element">
-            <h5 class="">${ucFirst(array[i])}</h5>
+            <h5 class="">${ucFirst(array[j])}</h5>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[i + 1])}%" aria-valuenow="${calcNiv(array[i + 1])}"
+                <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[j + 1])}%" aria-valuenow="${calcNiv(array[j + 1])}"
                     aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
             `;
-            i++;
+            j += 2;
 
 
         }
@@ -539,23 +540,23 @@ else if (path === "monCV.html") {
     // display competences
     function displayCompetence(array) {
         html_competences = "";
+        let j = 0;
 
-        for (let i = 0; i <= array.length / 2 + 1; i++) {
-
-            console.log("competences i= " + i);
+        for (let i = 0; i < array.length / 2; i++) {
+            console.log("competences j= " + j);
             html_competences += `
             <div class="col col-6">
                 <div class="element">
-                    <h5 class="">${ucFirst(array[i])}</h5>
+                    <h5 class="">${ucFirst(array[j])}</h5>
                     <div class="progress w-75">
-                        <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[i + 1])}%"
-                            aria-valuenow="${calcNiv(array[i + 1])}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[j + 1])}%"
+                            aria-valuenow="${calcNiv(array[j + 1])}" aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
                 </div>
             </div>
             `;
-            i++;
+            j += 2;
 
 
         }
@@ -568,16 +569,16 @@ else if (path === "monCV.html") {
         html_projets = "";
         let j = 0;
         for (let i = 0; i < arr.length / 3; i++) {
-            j += i;
+            // j += i;
             console.log("projets j= " + j);
             html_projets += `
             <div class="element">
-                <h5 id="projet" class="d-inline-block">${ucFirst(arr[j])}</h5>
+                <h5 id="projet" class="d-inline-block">${arr[j]}</h5>
                 <span id="anneP" class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}</span>
                 <h5 id="descp" class="text-muted">${ucFirst(arr[j + 1])}</h5>
             </div>
             `;
-            j += 2;
+            j += 3;
 
 
         }
@@ -588,7 +589,7 @@ else if (path === "monCV.html") {
         html_diplomes = "";
         let j = 0;
         for (let i = 0; i < arr.length / 3; i++) {
-            j += i;
+            // j += i;
             console.log("diplomes j= " + j);
             html_diplomes += `
             <div class="element">
@@ -598,7 +599,7 @@ else if (path === "monCV.html") {
 
         </div>
             `;
-            j += 2;
+            j += 3;
 
 
         }
@@ -611,17 +612,17 @@ else if (path === "monCV.html") {
         html_formations = "";
         let j = 0;
         for (let i = 0; i < arr.length / 4; i++) {
-            j += i;
+            // j += i;
             console.log("formations j= " + j);
             html_formations += `
             <div class="element">
             <h5 id="dip" class="d-inline-block">${ucFirst(arr[j])}</h5>
-            <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]}-${arr[j + 3]}</span>
+            <span class="h5 mx-5 d-inline-block float-end">${arr[j + 2]} - ${arr[j + 3]}</span>
             <h5 class="text-muted">${ucFirst(arr[j + 1])}</h5>
 
         </div>
             `;
-            j += 3;
+            j += 4;
 
 
         }
@@ -652,8 +653,9 @@ else if (path === "monCV.html") {
         console.log("projets " + liste_projets);
         console.log("competences " + liste_competences);
 
-        // couleur du cv
-        
+
+
+
 
         // header info
         document.getElementById("infoH").innerHTML = `
@@ -670,8 +672,9 @@ else if (path === "monCV.html") {
 
         } else {
 
-            // document.getElementById("imgh").style.backgroundImage.url(`../images/${personne.photo}`);
+            document.getElementById("imgh").style.backgroundImage = `url(/images/${personne.photo})`;
         }
+
 
         // detailp debut
         document.getElementById("detailp").innerHTML = `
@@ -791,13 +794,24 @@ else if (path === "monCV.html") {
 
 
 
+        // couleur du cv
+        document.querySelector(".infoH").style.backgroundColor = personne.color;
+        document.getElementById("imgh").style.backgroundColor = personne.color;
+        const titre = document.querySelectorAll(".titre");
+        const progress = document.querySelectorAll(".progress-bar");
+
+
+        for (let i = 0; i < progress.length; i++) {
+            progress[i].style.backgroundColor = personne.color;
+            
+        }
 
 
     }
-    // end onlad
+    // fin onlad
 
 
 
 
 }
-// end monCV page
+// fin monCV page
