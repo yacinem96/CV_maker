@@ -740,9 +740,11 @@ else if (path === "monCV.html") {
 
         } else {
 
-            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>`;
+            document.getElementById("comptetence").innerHTML = `<h2 class="titre">Competeneces</h2>` + `<div class="container">
+            <div class="row comp" id="comp">   </div>
+            </div>`;
             displayCompetence(liste_competences);
-            // document.getElementById("comp").innerHTML = html_competences;
+            document.getElementById("comp").innerHTML = html_competences;
 
         }
         // fin competeneces  
