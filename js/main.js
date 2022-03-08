@@ -115,19 +115,19 @@ if (path === "index.html") {
         html_diplomes = "";
         for (let i = 0; i < nbrd.value; i++) {
             html_diplomes += `
-         <div class="col-4 mt-2  mb-2">
+         <div class="col-12 col-md-4  mt-2  mb-2">
         <div class="form-floating ">
             <input type="text" class="form-control" nom="nomD" id="nomD${i}" placeholder="BAC">
             <label for="nomD">Nom du diplome ${i + 1}</label>
         </div>
     </div>
-    <div class="col-4 mt-2  mb-2">
+    <div class="col-12 col-md-4  mt-2  mb-2">
         <div class="form-floating ">
             <input type="text" class="form-control" nom="detailD" id="detailD${i}" placeholder="mention">
             <label for="detailD">Détail sur le diplome ${i + 1}</label>
         </div>
     </div>
-    <div class="col-4 mt-2  mb-2">
+    <div class="col-12 col-md-4  mt-2  mb-2">
         <div class="form-floating ">
             <input type="number" class="form-control" nom="anneD" id="anneD${i}" placeholder="2015">
             <label for="anneD">Année du diplome ${i + 1}</label>
@@ -145,25 +145,25 @@ if (path === "index.html") {
         for (let i = 0; i < nbrf.value; i++) {
 
             html_formations += `
-            <div class="col-3 mt-2  mb-2">
+            <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="nomF" id="nomF${i}" placeholder="BAC">
                <label for="nomF">Nom de la formation ${i + 1}</label>
            </div>
        </div>
-       <div class="col-3 mt-2  mb-2">
+       <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="detailF" id="detailF${i}" placeholder="mention">
                <label for="detailF">Détails sur la formation ${i + 1}</label>
            </div>
        </div>
-       <div class="col-3 mt-2  mb-2">
+       <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="dateDF" id="dateDF${i}" placeholder="2015">
                <label for="dateDF">mois-année début formation ${i + 1}</label>
            </div>
        </div>
-       <div class="col-3 mt-2  mb-2">
+       <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="dateFF" id="dateFF${i}" placeholder="2015">
                <label for="dateFF">mois-année fin formation ${i + 1}</label>
@@ -185,13 +185,13 @@ if (path === "index.html") {
         html_langues = "";
         for (let i = 0; i < nbrl.value; i++) {
             html_langues += `
-     <div class="col-5 mt-2  mb-2">
+     <div class="col-12 col-md-5 mt-2  mb-2">
     <div class="form-floating ">
         <input type="text" class="form-control" nom="nomL" id="nomL${i}" placeholder="BAC">
         <label for="nomL">Langue ${i + 1}</label>
     </div>
 </div>
-<div class="col-4 mt-2  mb-2">
+<div class="col-12 col-md-4  mt-2  mb-2">
     <div class="form-floating ">
         <select id="nivL${i}" class="form-select" aria-label="Default select example" aria-placeholder="nieaux">
         <option  selected disabled>Niveau de la langue ${i + 1}</option>
@@ -217,19 +217,19 @@ if (path === "index.html") {
         html_projets = "";
         for (let i = 0; i < nbrp.value; i++) {
             html_projets += `
-     <div class="col-4 mt-2  mb-2">
+     <div class="col-12 col-md-4  mt-2  mb-2">
     <div class="form-floating ">
         <input type="text" class="form-control" nom="nomP" id="nomP${i}" placeholder="BAC">
         <label for="nomP">Nom du projet ${i + 1}</label>
     </div>
 </div>
-<div class="col-4 mt-2  mb-2">
+<div class="col-12 col-md-4  mt-2  mb-2">
     <div class="form-floating ">
         <input type="text" class="form-control" nom="detailP" id="detailP${i}" placeholder="mention">
         <label for="detailP">Détail sur le projet ${i + 1}</label>
     </div>
 </div>
-<div class="col-4 mt-2  mb-2">
+<div class="col-12 col-md-4  mt-2  mb-2">
     <div class="form-floating ">
         <input type="number" class="form-control" nom="anneP" id="anneP${i}" placeholder="2015">
         <label for="anneP">Année du projet ${i + 1}</label>
@@ -247,13 +247,13 @@ if (path === "index.html") {
         html_competences = "";
         for (let i = 0; i < nbrc.value; i++) {
             html_competences += `
-     <div class="col-5 mt-2  mb-2">
+     <div class="col-12 col-md-5 mt-2  mb-2">
     <div class="form-floating ">
         <input type="text" class="form-control" nom="nomC" id="nomC${i}" placeholder="JAVA">
         <label for="nomC">Nom de la compétence ${i + 1}</label>
     </div>
 </div>
-<div class="col-4 mt-2  mb-2">
+<div class="col-12 col-md-4  mt-2  mb-2">
     <div class="form-floating ">
         <select id="nivC${i}"  class="form-select" aria-label="Default select example" aria-placeholder="nieaux">
         <option selected disabled>Selectionnez le nieau de la compétence ${i + 1}</option>
