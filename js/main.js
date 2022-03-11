@@ -9,6 +9,27 @@ var html_diplomes, html_formations, html_competences, html_langues, html_projets
 var a, b, c, d, e;
 const mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"];
 
+// fetch('../ville.json')
+// .then(res =>res.json())
+// .then(data =>obj=data)
+// .then(()=>console.log(obj))
+
+ async function getWilaya(ville) {
+
+    // let response = await fetch('../ville.json');
+    // let data = await response.json();
+    // let found = data.find(e => e.commune_name_ascii.toUpperCase() == ville.toUpperCase());
+
+    fetch('../ville.json')
+    .then(res =>res.json())
+    .then(data =>obj=data)
+    .then(()=> obj.find(e => e.commune_name_ascii.toUpperCase() == ville.toUpperCase() ? e.wilaya_name_ascii : "walou" ));
+    // if (found) {
+        
+    // } else {
+    //     return "walou"
+    // }
+}
 const formatDate = (date) => {
     const arr = date.split("-");
     let aaaa = arr[0];
@@ -160,13 +181,13 @@ if (path === "index.html") {
        <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="dateDF" id="dateDF${i}" placeholder="2015">
-               <label for="dateDF">mois-année début formation ${i + 1}</label>
+               <label for="dateDF">mois année début formation ${i + 1}</label>
            </div>
        </div>
        <div class="col-12 col-md-3 mt-2  mb-2">
            <div class="form-floating ">
                <input type="text" class="form-control" nom="dateFF" id="dateFF${i}" placeholder="2015">
-               <label for="dateFF">mois-année fin formation ${i + 1}</label>
+               <label for="dateFF">mois année fin formation ${i + 1}</label>
            </div>
        </div>
        `;
@@ -560,6 +581,22 @@ else if (path === "monCV.html") {
 
 
         }
+        //  while (j<array.length) {
+        //     console.log("competences j= " + j);
+        //     html_competences += `
+        //     <div class="col col-6">
+        //         <div class="element">
+        //             <h5 class="">${ucFirst(array[j])}</h5>
+        //             <div class="progress w-75">
+        //                 <div class="progress-bar" role="progressbar" style="width: ${calcNiv(array[j + 1])}%"
+        //                     aria-valuenow="${calcNiv(array[j + 1])}" aria-valuemin="0" aria-valuemax="100">
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     `;
+        //     j+=2;
+        //  }
 
 
     }
@@ -741,8 +778,20 @@ else if (path === "monCV.html") {
         document.getElementById("langue").innerHTML = `<h2 class="titre">Langues</h2>` + html_langues;
         // fin langues
 
+
+        // debut diplomes
+        if (liste_diplomes[0] === "") {
+
+        } else {
+
+            displayDiplome(liste_diplomes);
+            document.getElementById("diplome").innerHTML = `<h2 class="titre">Diplome</h2>` + html_diplomes + `<hr class="m-4 text-dark shadow">`;
+
+        }
+        // fin diplomes  
+
         // debut competences
-        if (liste_competences.length == 0) {
+        if (liste_competences[0] === "") {
 
         } else {
 
@@ -760,7 +809,7 @@ else if (path === "monCV.html") {
         // fin competeneces  
 
         // debut projets
-        if (liste_projets.length == 0) {
+        if (liste_projets[0] === "") {
 
         } else {
 
@@ -771,7 +820,7 @@ else if (path === "monCV.html") {
         // fin projets  
 
         // debut formations
-        if (liste_formations.length == 0) {
+        if (liste_formations[0] === "") {
 
         } else {
 
@@ -781,16 +830,6 @@ else if (path === "monCV.html") {
         }
         // fin formations  
 
-        // debut diplomes
-        if (liste_diplomes.length == 0) {
-
-        } else {
-
-            displayDiplome(liste_diplomes);
-            document.getElementById("diplome").innerHTML = `<h2 class="titre">Diplome</h2>` + html_diplomes + `<hr class="m-4 text-dark shadow">`;
-
-        }
-        // fin diplomes  
 
 
 
@@ -803,11 +842,11 @@ else if (path === "monCV.html") {
 
         for (let i = 0; i < progress.length; i++) {
             progress[i].style.backgroundColor = personne.color;
-            
+
         }
         for (let i = 0; i < titre.length; i++) {
             titre[i].style.color = personne.color;
-            
+
         }
 
 
